@@ -8,6 +8,7 @@ using Xunit;
 using CommandAPI.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using CommandAPI.Profiles;
+using CommandAPI.Dtos;
 
 namespace CommandAPI.Tests
 {
@@ -35,6 +36,12 @@ namespace CommandAPI.Tests
             IMapper mapper = new Mapper(configuration);
 
             var controller = new CommandsController(mockRepo.Object, mapper );
+
+           //Act
+           var result = controller.GetAllCommands();
+
+           //Assert
+           Assert.IsType<OkObjectResult>(result.Result); 
         }
 
         private List<Command> GetCommands(int num)
