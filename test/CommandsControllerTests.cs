@@ -34,8 +34,7 @@ namespace CommandAPI.Tests
                 cfg.AddProfile(realProfile));
             IMapper mapper = new Mapper(configuration);
 
-            var controller = new CommandsController(mockRepo.Object,
-            /* AutoMapper*/ );
+            var controller = new CommandsController(mockRepo.Object, mapper );
         }
 
         private List<Command> GetCommands(int num)
